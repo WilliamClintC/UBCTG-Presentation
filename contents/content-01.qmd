@@ -4,255 +4,48 @@ editor:
     wrap: sentence
 ---
 
-# Introduction à {{< iconify fa6-brands r-project >}}
-
-## Installation de {{< iconify fa6-brands r-project >}} {.smaller}
-
-Site internet officiel : <https://www.r-project.org/>
-
-> R is a language and environment for statistical computing and graphics.
-> It is a GNU project which is similar to the S language and environment which was developed at Bell Laboratories (formerly AT&T, now Lucent Technologies) by John Chambers and colleagues.
-> R can be considered as a different implementation of S.
-> There are some important differences, but much code written for S runs unaltered under R.
->
-> R provides a wide variety of statistical (linear and nonlinear modelling, classical statistical tests, time-series analysis, classification, clustering, ...) and graphical techniques, and is highly extensible.
-> The S language is often the vehicle of choice for research in statistical methodology, and R provides an Open Source route to participation in that activity.
->
-> One of R's strengths is the ease with which well-designed publication-quality plots can be produced, including mathematical symbols and formulae where needed.
-> Great care has been taken over the defaults for the minor design choices in graphics, but the user retains full control.
-
-⇒ [**Download R**](https://cloud.r-project.org/)
-
-## Sauvegarder le code ...
-
-### Pas l'environnement !
-
-::: columns
-::: {.column width="50%"}
-Les scripts :
-
--   "*standards*": `.R`.
-
--   "*Rmarkdown*":`.Rmd`.
-:::
-
-::: {.column width="50%"}
-Les "données" :
-
--   "*objet*": `.rds`.
-
--   "*liste d'objet*": `.Rdata`.
-:::
-:::
-
-## Utiliser un IDE[^content-01-1]
-
-[^content-01-1]: "Integrated Development Environment"
-
--   RStudio :\
-    <https://www.rstudio.com/products/rstudio/download/#download>
-
--   Emacs + ESS :\
-    <https://ess.r-project.org>
-
--   vim + Nvim-R :\
-    <https://medium.com/free-code-camp/turning-vim-into-an-r-ide-cd9602e8c217>
-
--   Visual Studio Code + vscode-R :\
-    <https://github.com/REditorSupport/vscode-R>
-
-## Faire *table rase* à chaque démarrage !
-
-Lorsque vous quittez {{< iconify fa6-brands r-project >}} :
-
--   Ne pas enregistrer votre espace de travail (*workspace*[^content-01-2]) !
-
-[^content-01-2]: Le *workspace* est automatiquement sauvegardé/chargé via un fichier nommé `.Rdata` (là où s'exécute {{< iconify fa6-brands r-project >}}).
-
-Lorsque vous démarrez {{< iconify fa6-brands r-project >}} :
-
--   Ne pas charger l'espace de travail sauvegardé précédemment !
-
-## Faire *table rase* !
-
-### Dans Windows
-
-![](contents/media/rwindows.png){fig-align="center"}
-
-## Faire *table rase* !
-
-### Dans RStudio (*Tools \> Global options*)
-
-![](contents/media/rstudio.png){fig-align="center"}
-
-## Faire *table rase* !
-
--   Dans un Terminal.
-
-    ``` bash
-    R --no-save --no-restore-data
-    ```
-
--   `.bash_profile` / `.bashrc` / ...
-
-    ``` bash
-    alias R='R --no-save --no-restore-data'
-    ```
-
-## Comment Réinitialiser {{< iconify fa6-brands r-project >}} ?
-
-### Avec `rm(list = ls())` ?
-
-> If the first line of your R script is
->
-> `rm(list = ls())`
->
-> I will come into your office and SET YOUR COMPUTER ON FIRE 🔥.
->
-> --- Jenny Bryan
-
-## Que ne fait pas `rm(list = ls())` ?
-
--   Réinitialiser la session {{< iconify fa6-brands r-project >}} en cours
-
--   Réinitialiser les `options()` → `options(stringsAsFactors = FALSE)`[^content-01-3]
-
--   Réinitialiser le répertoire de travail `getwd()` → `setwd()`
-
--   Réinitialiser les extensions {{< iconify fa6-brands r-project >}} attachées
-
-[^content-01-3]: Valeur par défaut {{< iconify fa6-brands r-project >}} v4.0.0 ([Kurt Hornik: stringsAsFactors](https://developer.r-project.org/Blog/public/2020/02/16/stringsasfactors/)).
-
-## Alors que fait `rm(list = ls())` ?
-
-``` r
-help(rm)
-```
-
-![](contents/media/rm-doc.png){fig-align="center"}
-
-## Réinitialiser {{< iconify fa6-brands r-project >}}
-
--   Dans une console {{< iconify fa6-brands r-project >}}
-
-    -   Via le raccourci `Ctrl+D`.
-
-    -   Via la fonction `q()` dans une console {{< iconify fa6-brands r-project >}}.
-
-## Réinitialiser {{< iconify fa6-brands r-project >}}
-
-::: columns
-::: {.column width="50%"}
--   Dans RStudio :
-
-    -   Via le raccourci `Ctrl+Shift+F10`.
-
-    -   Via le menu.
-:::
-
-::: {.column width="50%"}
-![](contents/media/restartr.png){fig-align="center"}
-:::
-:::
-
-## Désactiver les fichiers de démarrage
-
--   `--vanilla`,\
-    pour désactiver le chargement de **tous les fichiers** de démarrage.
-
--   `--no-init-file`,\
-    pour désactiver le chargement du fichier `.Rprofile`.
-
--   `--no-environ`,\
-    pour désactiver le chargement du fichier `.Renviron`.
-
-## `setwd(...)` en première ligne ...
-
-> If the first line of your R script is
->
-> `setwd("C:\Users\jenny\path\that\only\I\have")`
->
-> I will come into your office and SET YOUR COMPUTER ON FIRE 🔥.
->
-> --- Jenny Bryan
-
-## Faisons le Point sur `setwd()` ! {.smaller}
-
-``` r
-library(ggplot2)
-
-setwd("/path/to/a/directory/on/my/laptop/data")
-
-df <- read.delim("data.csv")
-
-p <- ggplot(df, aes(x, y)) + geom_point()
-
-ggsave("../figs/scatterplot.png")
-```
-
-</br>
-
-``` r
-library(ggplot2)
-
-setwd("/path/to/a/directory/on/my/laptop/data")
-
-df <- read.delim("data.csv")
-
-p <- ggplot(df, aes(x, y)) + geom_point()
-
-setwd("/path/to/a/directory/on/my/laptop/figs")
-
-ggsave("scatterplot.png")
-```
-
-## L'extension {{< iconify fa6-brands r-project >}} `here`
-
-<!-- https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/here.png -->
-
-![](contents/media/here_ahorst.png){fig-align="center" width="40%"}
-
-``` r
-here::here()
-here::i_am("radvanced.qmd")
-here::i_am("contents/content-01.qmd")
-```
-
-## Utiliser un Mode "Projet" via un IDE
-
--   Démarrer un projet A :
-
-    1.  Démarre R.
-
-    2.  Défini le répetoire de travail de R comme la racine du projet A.
-
--   Passer d'un projet A à un project B :
-
-    1.  Redémarre R.
-
-    2.  Défini le répetoire de travail de R comme la racine du projet B.
-
-## Utiliser un Mode "Projet"
-
--   [**"What They Forgot to Teach You About R"**](https://rstats.wtf/project-oriented-workflow.html)\
-    --- Jenny Bryan & Jim Hester
-
--   [**"Project-oriented Workflow"**](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/)\
-    --- Jenny Bryan
-
-## Lectures Utiles
-
--   [**"Code Smells and Feels"**](https://www.youtube.com/watch?v=7oyiPBjLAWY)\
-    --- Jenny Bryan
-
--   [**"Advanced R"**](https://adv-r.hadley.nz/)\
-    --- Hadley Wickham
-
--   [**"Project-oriented Workflow"**](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/)\
-    --- Jenny Bryan
-
--   [**"R for Data Science"**](https://r4ds.had.co.nz/)\
-    --- Garrett Grolemund & Hadley Wickham
-
--   [**"What They Forgot to Teach You About R"**](https://rstats.wtf/)\
-    --- Jenny Bryan & Jim Hester
+# Outline
+
+1.  Background
+2.  Goal
+3.  To do
+4.  Questions
+
+# Background
+
+-   Last year we joined the Bloomberg trading competition.
+    -   \$1 million virtual USD
+    -   3 months to get the highest alpha
+-   Alex B's team placed first in Canada
+-   Competitive
+    -   948 teams
+    -   world wide
+-   Luck (3 months)
+
+# Goal
+
+-   Win Bloomberg Trading Competition
+-   Have Fun
+-   Gain Experience
+    -   Bloomberg is the world standard
+
+# To Do
+
+1.  Pick a strategy you want to do
+    -   Earning Call's Analysis
+    -   Drug Patent Probabilities
+    -   Energy and Defense Sector Fundamental Analysis
+2.  Groupings (spreadsheet)
+3.  *optional: Log your position/trade*
+4.  Follow strategy
+
+# Prize
+
+-   UBCTG Merch
+-   Ipad
+-   Bragging Rights
+-   Job
+
+# Questions?
+
+Background \| Goal \| To do

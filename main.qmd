@@ -1,10 +1,10 @@
 ---
-title: "{{< iconify fa6-brands r-project >}}"
-pagetitle: "R - Introduction Avancée"
-subtitle: "Introduction Avancée"
+title: "Bloomber Trading Competition"
+pagetitle: "Bloomber Trading Competition"
+subtitle: "Strategy"
 author: William Clinton-Co
 date: today
-date-format: "[Dernière mise à jour : ]YYYY-MM-DD"
+date-format: "YYYY-MM-DD"
 lang: fr
 execute:
   echo: true
@@ -13,11 +13,7 @@ execute:
 embed-resources: true
 format:
   coeos-revealjs:
-    logo: https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mc.svg
+    logo: UBCTG.png
 ---
 
-\-\--
-
 {{< include contents/content-01.qmd >}}
-
-{{< include contents/content-11.qmd >}} {{< include contents/_about.qmd >}}

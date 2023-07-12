@@ -8,10 +8,7 @@ contributes:
       slide-number: c
       highlight-style: github-dark
       theme: coeos.scss
-      footer: |
-        <a href="https://mickael.canouil.fr/">mickael.canouil.fr</a>
-        |
-        <a href = "https://creativecommons.org/licenses/by-sa/4.0/">License: CC-BY-SA-4.0</a>
+      footer: 
       logo: coeos.svg
       include-in-header:
         - text: |
