@@ -26,16 +26,19 @@ editor:
 
 -   Win Bloomberg Trading Competition
 -   Have Fun
--   Gain Experience
-    -   Bloomberg is the world standard
+-   Bloomberg Experience
+-   Meet other team members
+-   Shared Experiences
 
 # To Do
 
-1.  Pick a strategy you want to do
+1.  Pick uncorrelated strategy you want to do
     -   Earning Call's Analysis
     -   Drug Patent Probabilities
     -   Energy and Defense Sector Fundamental Analysis
 2.  Groupings (spreadsheet)
+    1.  Strategy
+    2.  Groupings
 3.  *optional: Log your position/trade*
 4.  Follow strategy
 
