@@ -32,7 +32,7 @@ editor:
 
 # To Do
 
-1.  Pick uncorrelated strategy you want to do
+1.  Pick uncorrelated strategy you want to do (at least 5 stocks)
     -   Earning Call's Analysis
     -   Drug Patent Probabilities
     -   Energy and Defense Sector Fundamental Analysis
